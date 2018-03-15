@@ -19,4 +19,4 @@ lorem ipsum | 随机设定长度生成 lorem ipsum 单词 | 格式:整数,默认
 ## Todo
 
 - 更多类型支持
-- 扩充新零售数据随机池
+- English version
