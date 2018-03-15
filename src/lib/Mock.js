@@ -8,6 +8,7 @@ class Mock {
 
   init () {
     this.parseSchema(this.schema)
+    console.log(this.output)
     this.wrapForEle()
   }
   getOutput () {
@@ -77,6 +78,9 @@ class Mock {
           this.output += ','
         }
       })
+      if (schema.length === 0) {
+        this.output += '}'
+      }
       if (i !== length - 1) {
         this.output += ','
       }
