@@ -2,7 +2,7 @@
   <div class="container">
     <Header/>
     <Schema :schema="schema"/>
-    <Generate :schema="schema"/>
+    <Generate :schema="schema" @loadConfig="loadedConfig"/>
   </div>
 </template>
 
@@ -22,6 +22,11 @@ export default {
   data () {
     return {
       schema: defaultSchema
+    }
+  },
+  methods: {
+    loadedConfig (value) {
+      this.schema = JSON.parse(value)
     }
   }
 }
