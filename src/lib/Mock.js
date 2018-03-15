@@ -7,7 +7,6 @@ class Mock {
 
   init () {
     this.parseSchema(this.schema)
-    console.log(JSON.stringify(JSON.parse(this.output), null, 4))
   }
   getOutput () {
     return JSON.stringify(JSON.parse(this.output), null, 2)
@@ -67,7 +66,7 @@ class Mock {
      * @param {object} field
      */
   handleIndexType (field, index) {
-    const start = Number(field.condition) || 1 // default start at 1
+    const start = Math.floor(Number(field.condition)) || 1 // default start at 1
     this.output += start + index
   }
   /**
