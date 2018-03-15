@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <p class="desc">JSON数据生成器</p>
-    <a href="#" class="about">查看手册</a>
+    <a href="https://github.com/iammvp/mocker/tree/eleMaster" target="_blank" class="about">查看手册</a>
   </div>
 </template>
 
