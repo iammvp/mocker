@@ -23,6 +23,26 @@ const type = [
     'desc': '定值'
   },
   {
+    'key': 'itemName',
+    'desc': '商品名称'
+  },
+  {
+    'key': 'itemCategory',
+    'desc': '商品分类'
+  },
+  {
+    'key': 'storeAddress',
+    'desc': '店铺地址'
+  },
+  {
+    'key': 'imageUrl',
+    'desc': '图片地址'
+  },
+  {
+    'key': 'imageHash',
+    'desc': '图片hash'
+  },
+  {
     'key': 'word',
     'desc': 'lorem ipsum'
   },

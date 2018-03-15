@@ -1,4 +1,5 @@
-const loremIpsum = require('lorem-ipsum')
+import loremIpsum from 'lorem-ipsum'
+import ele from './ele' // ele 新零售专用
 class Mock {
   constructor (schema) {
     this.schema = schema // data schema
@@ -7,10 +8,14 @@ class Mock {
 
   init () {
     this.parseSchema(this.schema)
-    console.log(JSON.stringify(JSON.parse(this.output), null, 4))
+    this.wrapForEle()
   }
   getOutput () {
     return JSON.stringify(JSON.parse(this.output), null, 2)
+  }
+  // 为新零售数据包裹json
+  wrapForEle () {
+    this.output = '{"error_no": 0,"error_msg": "",' + this.output.substring(1)
   }
   parseSchema (schema, length = 1) {
     for (let i = 0; i < length; i++) {
@@ -40,6 +45,21 @@ class Mock {
           case 'timestamp':
             this.handleTimestampType(field)
             break
+          case 'itemName':
+            this.handleItemNameType(field)
+            break
+          case 'itemCategory':
+            this.handleItemCategoryType(field)
+            break
+          case 'storeAddress':
+            this.handleStoreAddressType(field)
+            break
+          case 'imageUrl':
+            this.handleImageUrlType(field)
+            break
+          case 'imageHash':
+            this.handleImageHashType(field)
+            break
           case 'object':
             this.parseSchema(field.schema)
             break
@@ -67,7 +87,7 @@ class Mock {
      * @param {object} field
      */
   handleIndexType (field, index) {
-    const start = Number(field.condition) || 1 // default start at 1
+    const start = Math.floor(Number(field.condition)) || 1 // default start at 1
     this.output += start + index
   }
   /**
@@ -138,6 +158,24 @@ class Mock {
     const end = new Date(timestampArray[1]).getTime() || new Date().getTime()
     const randomTime = this.random(start, end)
     this.output += `"${randomTime}"`
+  }
+  /**
+     * handle ele type, generate a reasonable value randomly
+     */
+  handleItemNameType () {
+    this.output += `"${ele.getItemName()}"`
+  }
+  handleImageHashType () {
+    this.output += `"${ele.getImageHash()}"`
+  }
+  handleImageUrlType () {
+    this.output += `"${ele.getImageUrl()}"`
+  }
+  handleItemCategoryType () {
+    this.output += `"${ele.getCategory()}"`
+  }
+  handleStoreAddressType () {
+    this.output += `"${ele.getStoreAddress()}"`
   }
   random (min, max, decimal = 0) {
     if (decimal === 0) {

@@ -1,21 +1,27 @@
 # mocker
 
-> 饿了么新零售数据生成器
+> 饿了么新零售假数据生成器,设置属性名,属性类型,限制条件就可以快速生成需要的JSON数据
 
-## Build Setup
+## 配置
 
-``` bash
-# install dependencies
-npm install
+类型 | 说明 | 限制
+--- | --- | ---
+自增id | 自增的整数,可以设置从多少开始 | 格式:整数,默认:1
+枚举 | 随机从所给的值中选择一个 | 格式: 值1&#124;值2&#124;值3
+整数 | 随机生成一个所给范围的整数 | 格式: 小数&#124;大数, 默认:1&#124;10
+小数 | 随机生成一个所给范围的小数,可以设置多少位小数 | 格式:小数&#124;大数&#124;小数位数, 默认:1&#124;10&#124;2
+定值 | 生成所给的值 | N/A
+lorem ipsum | 随机设定长度生成 lorem ipsum 单词 | 格式:整数,默认:10
+时间戳 | 随机生成所给范围的时间戳 | 格式:开始时间&#124;结束时间, 默认: 1970&#124;now
+聚合对象 | 生成对象属性,可以设置 sub 配置 | N/A
+聚合数组 | 生成数组属性,可以设置 sub 配置,可以设置数组的长度 | 格式:整数,默认:100
+商品名称 | 随机生成一个看起来合理的商品名称 | N/A
+店铺地址 | 随机生成一个看起来合理的店铺地址 | N/A
+图片地址 | 随机生成一个看起来合理的图片地址 | N/A
+商品分类 | 随机生成一个看起来合理的商品分类 | N/A
+图片hash | 随机生成一个看起来合理的图片hash | N/A
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Todo
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- 更多类型支持
+- 扩充新零售数据随机池
